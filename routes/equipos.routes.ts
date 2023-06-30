@@ -6,7 +6,7 @@ import Lineas from '../models/lineas.model';
 import Divisiones from '../models/divisiones.model';
 
 import { router as app } from './router';
-import Ubicaciones from '../models/Ubicaciones.model';
+import Ubicaciones from '../models/ubicaciones.model';
 const { Op } = require("sequelize");
 
 

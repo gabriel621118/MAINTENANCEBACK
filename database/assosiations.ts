@@ -27,7 +27,6 @@ import Tipomovimientos from "../models/tipomovimientos.model";
 import Ventas from "../models/ventas.model";
 import Ventasdetalle from "../models/ventasdetalle.model";
 import Equipos from "../models/equipos.model";
-import Ubicaciones from "../models/Ubicaciones.model";
 import Programas from "../models/programas.model";
 import Grupotrabajo from "../models/grupotrabajo.model";
 import Planes from "../models/planes.model";
@@ -46,6 +45,7 @@ import Employee from "../models/employee.model";
 import Divisiones from "../models/divisiones.model";
 import Manuales from "../models/manuales.model";
 import Evidencias from "../models/evidencias.model";
+import Ubicaciones from "../models/ubicaciones.model";
 
 
 export const createAssosiations = () => {  
