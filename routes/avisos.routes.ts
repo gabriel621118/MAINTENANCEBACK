@@ -9,7 +9,7 @@ import Ordentrabajo from '../models/ordentrabajo.model';
 
 import { router as app } from './router';
 import Grupotrabajo from '../models/grupotrabajo.model';
-import Ubicaciones from '../models/Ubicaciones.model';
+import Ubicaciones from '../models/ubicaciones.model';
 const { Op } = require("sequelize");
 
 
