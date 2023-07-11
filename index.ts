@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+// Inicializacion de variables de entorno
+dotenv.config();
 import Server from './classes/server';
 import router from './routes/router';
 // 
