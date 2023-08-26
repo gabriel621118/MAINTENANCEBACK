@@ -55,7 +55,7 @@ app.get('/evidencias/tomaimagen/:id', (_req: Request, res: Response) => {
   app.get('/evidencias/tomaRCA/:id', (_req: Request, res: Response) => {
     const id=_req.params.id
     const noImg = path.join(__dirname,`../routes/RCAS/NORCA.pdf`);
-    const pathImg = path.join(__dirname,`../routes/RCAS/${id}`);
+    const pathImg = path.join(__dirname,`../routes/RCAS/${id}.pdf`);
     console.log('este el es id que manda para abrir el modal',id)
     //imagen por defecto
     if (fs.existsSync(pathImg)){
