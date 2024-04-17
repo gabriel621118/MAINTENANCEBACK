@@ -13,6 +13,14 @@ Users.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
     street: {
         type: DataTypes.STRING,
         allowNull: false,

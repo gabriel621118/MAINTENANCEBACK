@@ -49,6 +49,7 @@ import progsemanaorden from './routes/progsemanaorden.routes';
 import divisiones from './routes/divisiones.routes';
 import evidencias from './routes/evidencias.routes';
 import manuales from './routes/manuales.routes';
+import login from './routes/login.routes';
 import fileUpload from 'express-fileupload';
 import path from 'path';
 
@@ -118,6 +119,7 @@ server.app.use('/api', progsemanaorden);
 server.app.use('/api', divisiones);
 server.app.use('/api', evidencias);
 server.app.use('/api', manuales);
+server.app.use('/api', login);
 
 
 
