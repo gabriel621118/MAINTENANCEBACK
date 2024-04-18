@@ -170,10 +170,10 @@ AvisoStatus.hasMany(Avisos,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 Avisos.belongsTo(AvisoStatus,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 Equipos.hasMany(Avisos,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 Avisos.belongsTo(Equipos,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
-/*
+
 Ordentrabajo.hasOne(Avisos,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 Avisos.belongsTo(Ordentrabajo,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
-*/
+
 Grupotrabajo.hasOne(Avisos,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 Avisos.belongsTo(Grupotrabajo,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
 

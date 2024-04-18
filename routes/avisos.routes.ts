@@ -135,21 +135,14 @@ app.post('/grabar_avisos',(_req: Request, res: Response) => {
     const body=_req.body
     console.log('son los datos del body que llegan para garabar el aviso',body)
     Avisos.create({
-       
         encabezado:body.encabezado,
         falla:body.falla,
         historial:'......',    
-
         avisotipoId:body.selecttipo,
-        avisostatusId:15,
+        avisostatusId:1,
         equipoId:body.selectequipo,
         ordentrabajoId:1,
-        grupotrabajoId:body.selectgpo
-
-
-       
-
-          
+        grupotrabajoId:body.selectgpo     
     })
        .then ((data)=>res.json({ ok:true,data}))
        .catch((error)=>{
