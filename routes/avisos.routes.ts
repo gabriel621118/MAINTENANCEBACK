@@ -133,7 +133,7 @@ app.get('/avisosxstatus/:idstatus', (_req: Request, res: Response) => {
 //Operaciones
 app.post('/grabar_avisos',(_req: Request, res: Response) => {
     const body=_req.body
-    console.log('estsos son los datos del body que llegan para garabar el aviso',body)
+    console.log('son los datos del body que llegan para garabar el aviso',body)
     Avisos.create({
        
         encabezado:body.encabezado,
@@ -143,7 +143,7 @@ app.post('/grabar_avisos',(_req: Request, res: Response) => {
         avisotipoId:body.selecttipo,
         avisostatusId:15,
         equipoId:body.selectequipo,
-       
+        ordentrabajoId:1,
         grupotrabajoId:body.selectgpo
 
 
@@ -152,7 +152,10 @@ app.post('/grabar_avisos',(_req: Request, res: Response) => {
           
     })
        .then ((data)=>res.json({ ok:true,data}))
-       .catch((error)=>res.json({ok:false,error}))
+       .catch((error)=>{
+        console.log('error al grabar el aviso',error)
+        res.json({ ok:false,error})
+       })
  });
  
  
