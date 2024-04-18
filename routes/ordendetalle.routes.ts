@@ -214,15 +214,15 @@ app.get('/updated_ordenmodif/:id',async(_req: Request, res: Response) => {
   
             for ( const iterator of detalle) {
               switch (iterator.getDataValue('grupotrabajoId')  ){
-                case 1:
+                case 5:
                   migrupotrabajo=iterator.getDataValue('grupotrabajoId')                                                                      
                  costohhmec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plandeta_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
           break;
-                 case 2:
+                 case 6:
                   migrupotrabajo=iterator.getDataValue('grupotrabajoId')
                  costohhelec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plandeta_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
           break;
-                 case 3:
+                 case 7:
                   migrupotrabajo=iterator.getDataValue('grupotrabajoId')
                 costohhinst+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plandeta_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
       break;
@@ -244,7 +244,7 @@ app.get('/updated_ordenmodif/:id',async(_req: Request, res: Response) => {
    Ordentrabajo.update({
     orden_costoinicial:costototalhhombre+costotalmaterial,
     orden_costofinal  :costototalhhombre+costotalmaterial,    
-    ordenstatusId     :2,
+    ordenstatusId     :6,
     
                   
                   

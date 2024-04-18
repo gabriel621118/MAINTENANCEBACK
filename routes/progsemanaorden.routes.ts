@@ -75,7 +75,7 @@ app.get('/progsemanaordenesxdia/:iddia', (_req: Request, res: Response) => {
 app.post('/grabar_progsemanaordenes',async(_req: Request, res: Response) => {
     const body=_req.body
     const t = await sequelize.transaction();
-    console.log('estsos son los datos del body que llegan para el equipo',body)
+    console.log('estsos son los datos del body que llegan para crear el programa semanal',body)
     try {
     await  Progsemanaorden.create({
 
@@ -94,7 +94,7 @@ app.post('/grabar_progsemanaordenes',async(_req: Request, res: Response) => {
       },{transaction:t})
             
   
-    await  Ordentrabajo.update({ordenstatusId:3},
+    await  Ordentrabajo.update({ordenstatusId:7},
     {where:{id:body.ordentrabajoId},transaction:t})
 
     await t.commit()
@@ -117,13 +117,19 @@ app.post('/grabar_progsemanaordenes',async(_req: Request, res: Response) => {
      console.log('ESTE ES EL BODY PARA ACUTUALIZAR PROGRAMA SEMANAL',body)
      const year=getYear(new Date(body.calendario))
      const misemana= differenceInWeeks(new Date(body.calendario), new Date(year, 0, 1))
+     const date2 = new Date(body.calendario);
+     const date=new Date(body.calendario)
+    date2.setDate(date.getDate() + 1);
      Progsemanaorden.update({//encabezado:body.encabezado,
       hhlunes:body.lunes,   
       hhmartes :body.martes,
       hhmiercoles :body.miercoles,
       hhjueves:body.jueves,
       hhviernes:body.viernes,
-      fecha:body.calendario,
+      //fecha:new Date(body.calendario),
+
+
+      fecha:new Date(date2),
       semana:misemana
                      
                       }, {

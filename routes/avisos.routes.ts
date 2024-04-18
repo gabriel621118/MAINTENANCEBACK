@@ -40,6 +40,7 @@ app.get('/obtener_todosavisos', (_req: Request, res: Response) => {
       }
 
   ], 
+ 
    })
       .then((data) => res.json({ ok: true, data }))
       .catch((err) => res.status(400).json({ ok: false, err }));
@@ -62,11 +63,10 @@ app.get('/obtener_avisos', (_req: Request, res: Response) => {
       }
 
   ], 
-  where: {
+  where: {avisostatusId:15}
         
-     ordentrabajoId:{ [Op.ne]:[2]}
-    //avisostatusId:2
-   }  })
+  
+     })
       .then((data) => res.json({ ok: true, data }))
       .catch((err) => res.status(400).json({ ok: false, err }));
 });
@@ -133,17 +133,20 @@ app.get('/avisosxstatus/:idstatus', (_req: Request, res: Response) => {
 //Operaciones
 app.post('/grabar_avisos',(_req: Request, res: Response) => {
     const body=_req.body
-    console.log('estsos son los datos del body que llegan para el equipo',body)
+    console.log('estsos son los datos del body que llegan para garabar el aviso',body)
     Avisos.create({
        
         encabezado:body.encabezado,
         falla:body.falla,
-        historial:'......',        
+        historial:'......',    
+
         avisotipoId:body.selecttipo,
-        avisostatusId:11,
+        avisostatusId:15,
         equipoId:body.selectequipo,
-        ordentrabajoId:2,
+       
         grupotrabajoId:body.selectgpo
+
+
        
 
           

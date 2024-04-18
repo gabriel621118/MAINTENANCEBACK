@@ -30,6 +30,10 @@ Ordentrabajo.init({
         type: DataTypes.FLOAT,
         allowNull: false,
     },
+    orden_Aviso: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
    
    
     //usertype id

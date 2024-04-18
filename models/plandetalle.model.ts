@@ -13,7 +13,7 @@ Plandetalle.init({
     },
    
     plandeta_hhombre: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
     },
    

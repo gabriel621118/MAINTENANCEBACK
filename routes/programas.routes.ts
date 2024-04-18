@@ -80,6 +80,9 @@ app.get('/programasxlinea/:idlinea', async (_req: Request, res: Response) => {
 
 
 
+
+
+
 app.get('/programasxgrupotrabaajo/:idgrupo', async (_req: Request, res: Response) => {
   const idgrupo=_req.params.idgrupo
   const data: { programa:Programas, color:string }[] = [];

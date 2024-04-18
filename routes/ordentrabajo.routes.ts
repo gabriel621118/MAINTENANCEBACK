@@ -76,7 +76,7 @@ app.get('/obtener-ordentrabajoxcerrar', (_req: Request, res: Response) => {
       model:Ordenstatus
      }    
    ],
-   where:{ordenstatusId:[2,3]}
+   where:{ordenstatusId:[6,7]}
 
    })
       .then((data) => res.json({ ok: true, data }))
@@ -94,7 +94,7 @@ app.get('/obtener-ordentrabajossincerrar', (_req: Request, res: Response) => {
       model:Ordenstatus
      }    
    ],
-   where:{ordenstatusId:{[Op.ne]:4},id:{[Op.ne]:2}}
+   where:{ordenstatusId:{[Op.ne]:8},id:{[Op.ne]:0}}
 
    })
       .then((data) => res.json({ ok: true, data }))
@@ -240,7 +240,19 @@ app.get('/ordenesxstatusprogsemanal/:idstatus', (_req: Request, res: Response) =
 
         ],
           // where:{ordenstatusId:idstatus,id:{[Op.ne]:2}}
-         where:{ordenstatusId:{[Op.ne]:idstatus},id:{[Op.ne]:2}}
+         //where:{ordenstatusId:{[Op.ne]:idstatus},id:{[Op.ne]:2}}
+
+         where: {
+          [Op.or]: [
+            { ordenstatusId: 6 },
+            { ordenstatusId: 7 }
+          ]
+        }
+
+
+
+
+        
    }) 
       .then((data) => res.json({ ok: true, data }))
       .catch((err) => res.status(400).json({ ok: false, err }));
@@ -277,13 +289,15 @@ app.get('/cambiar-statusordencerr/:id',async(_req: Request, res: Response) => {
   const t = await sequelize.transaction();
    try {
    
-  await Ordentrabajo.update({  ordenstatusId:4,orden_fechafin:new(Date) }, {
+  await Ordentrabajo.update({  ordenstatusId:8,orden_fechafin:new(Date) }, {
       where: {
         id: id,
       },transaction:t});    
  
       const ordenregistro= await Ordentrabajo.findOne({ where:{id:id} })
  plan=ordenregistro?.getDataValue('planeId')
+
+ console.log('este es el numero de plan que pasa a plan_lanzado=false',plan)
 
  await Planes.update({  plan_lanzado:false }, {
     where: {
@@ -432,15 +446,15 @@ for (const iterator of pedido?.getDataValue('plandetalles')) {
           //console.log ('valores del iterator',iterator)
 
           switch (iterator.getDataValue('grupotrabajoId')  ){
-                 case 1:
+                 case 5:
                                                                          
                   costohhmec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
            break;
-                  case 2:
+                  case 6:
                  
                   costohhelec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
            break;
-                  case 3:
+                  case 7:
                 
                  costohhinst+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
      break;
@@ -477,8 +491,8 @@ console.log('horas hombre ',costohhelec)
         orden_costofinal:costototalhhombre+costotalmaterial, 
        
         planeId:body.planeId,
-        ordentipoId:3,
-        ordenstatusId:3,
+        ordentipoId:8,
+        ordenstatusId:6,
         equipoId:body.equipoId
 
 
@@ -534,7 +548,7 @@ app.post('/grabar-ordentrabajosinplan',async (_req: Request, res: Response) => {
            
           ],   
     
-          where: {id :1 }
+          where: {id :6 }
         });
         let hhelec=0
         let costohhelec=0
@@ -551,15 +565,15 @@ app.post('/grabar-ordentrabajosinplan',async (_req: Request, res: Response) => {
          //console.log ('valores del iterator',iterator)
 
          switch (iterator.getDataValue('grupotrabajoId')  ){
-                case 1:
+                case 5:
                                                                         
                  costohhmec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
           break;
-                 case 2:
+                 case 6:
                 
                  costohhelec+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
           break;
-                 case 3:
+                 case 7:
                
                 costohhinst+=iterator.getDataValue('plandeta_hhombre')*iterator.getDataValue('plan_numpersonas')*iterator.getDataValue('grupotrabajo').getDataValue('preciohhombre');
     break;
@@ -599,7 +613,7 @@ console.log('horas hombre ',costohhelec)
      
       planeId:body.planeId,
       ordentipoId:body.ordentipoId,
-      ordenstatusId:2,
+      ordenstatusId:5,
       equipoId:body.equipoId
 
 
